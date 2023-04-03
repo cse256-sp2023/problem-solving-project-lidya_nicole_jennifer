@@ -9,18 +9,18 @@ emitter = new EventTarget()
 permissions = {
   
   EXECUTE: '[read_execute] traverse folder/execute file',
-  LIST: '[read] list folder/read contents',
-  READ_ATTR: '[read] read attributes',
-  READ_EXTENDED_ATTR: '[read] read extended attributes',
-  WRITE_DATA: '[write] create files/write data',
-  APPEND_DATA: '[write] create folders/append data',
-  WRITE_ATTR: '[write] write attributes',
-  WRITE_EXTENDED_ATTR: '[write] write extended attributes',
-  DELETE_SUB: '[modify] delete subfolders and files',
-  DELETE: '[modify] delete',
-  READ_PERMS: '[read] read permissions',
-  CHANGE_PERMS: 'change permissions',
-  TAKE_OWNERSHIP: 'take ownership',
+  LIST: '[access] read (list folder/read contents)',
+  READ_ATTR: '[access] read (attributes)',
+  READ_EXTENDED_ATTR: '[access] read (extended attributes)',
+  WRITE_DATA: '[make changes] write (create files/write data)',
+  APPEND_DATA: '[make changes] write (create folders/append data)',
+  WRITE_ATTR: '[make changes] write (attributes)',
+  WRITE_EXTENDED_ATTR: '[make changes] write (extended attributes)',
+  DELETE_SUB: '[make changes] modify (delete subfolders and files)',
+  DELETE: '[make changes] modify (delete)',
+  READ_PERMS: '[access] read (permissions)',
+  CHANGE_PERMS: '[other] change permissions',
+  TAKE_OWNERSHIP: '[other] take ownership',
 }
 
 permission_ids = {}
