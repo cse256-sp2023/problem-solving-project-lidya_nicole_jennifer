@@ -7,17 +7,18 @@ emitter = new EventTarget()
 // -- pseudo-enum of permission types -- 
 // see also "List of possible permission" table at  https://espace.cern.ch/winservices-help/NICESecurityAndAntivirus/NICESecurityHowTo/Pages/ManagingACLSettingPermssion.aspx 
 permissions = {
-  EXECUTE: 'traverse folder/execute file',
-  LIST: 'list folder/read contents',
-  READ_ATTR: 'read attributes',
-  READ_EXTENDED_ATTR: 'read extended attributes',
-  WRITE_DATA: 'create files/write data',
-  APPEND_DATA: 'create folders/append data',
-  WRITE_ATTR: 'write attributes',
-  WRITE_EXTENDED_ATTR: 'write extended attributes',
-  DELETE_SUB: 'delete subfolders and files',
-  DELETE: 'delete',
-  READ_PERMS: 'read permissions',
+  
+  LIST: '[read] list folder/read contents',
+  READ_ATTR: '[read] read attributes',
+  READ_EXTENDED_ATTR: '[read] read extended attributes',
+  READ_PERMS: '[read] read permissions',
+  WRITE_DATA: '[write] create files/write data',
+  APPEND_DATA: '[write] create folders/append data',
+  WRITE_ATTR: '[write] write attributes',
+  WRITE_EXTENDED_ATTR: '[write] write extended attributes',
+  EXECUTE: '[read_execute] traverse folder/execute file',
+  DELETE_SUB: '[modify] delete subfolders and files',
+  DELETE: '[modify] delete',
   CHANGE_PERMS: 'change permissions',
   TAKE_OWNERSHIP: 'take ownership',
 }

@@ -1,5 +1,17 @@
 // ---- Define your dialogs  and panels here ----
+//let adv_effective_tab = define_new_effective_permissions("effperm", add_info_col = true, which_permissions = null);
 
+
+$('#permdialog').append($("#adv_effective_user_text"));
+$('#permdialog').append($('#adv_effective_current_user'));
+$('#permdialog').append($('#adv_effective_current_user_line'));
+
+$('#permdialog').append($('#adv_effective_effective_list'));
+$('#permdialog').append($("#adv_effective_effective_text"));
+//$('#permdialog').append("For special permissions or advanced settings, click Advanced.");
+
+
+//
 
 
 // ---- Display file structure ----

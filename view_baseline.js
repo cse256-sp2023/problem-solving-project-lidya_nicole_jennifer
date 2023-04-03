@@ -32,13 +32,13 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
 obj_name_div = $('<div id="permdialog_objname" class="section">Object Name: <span id="permdialog_objname_namespan"></span> </div>')
 
 //Make the div with the explanation about special permissions/advanced settings:
-advanced_expl_div = $('<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced.</div>')
+advanced_expl_div = $('<div id="permdialog_advanced_explantion_text"> <br><br></div>')
 
 // Make the (grouped) permission checkboxes table:
 grouped_permissions = define_grouped_permission_checkboxes('permdialog_grouped_permissions')
 grouped_permissions.addClass('section') // add a 'section' class to the grouped_permissions element. This class adds a bit of spacing between this element and the next.
 
-// Make the list of users (empty for now - will get populated when we know the file):
+// square: Make the list of users (empty for now - will get populated when we know the file):
 file_permission_users = define_single_select_list('permdialog_file_user_list', function(selected_user, e, ui){
     // when a new user is selected, change username attribute of grouped permissions:
     grouped_permissions.attr('username', selected_user)
@@ -265,16 +265,20 @@ function open_advanced_dialog(file_path) {
     $(`#advdialog`).dialog('open')
 }
 
-// Update Effective User display
+// rectangle: Update Effective User display
 function update_effective_user() {
     $('.effectivecheckcell').empty()
+    
+    //edit: let selected_username = $('.ui-selected').attr('name')
     let selected_username = $('#adv_effective_current_user').attr('selected_user')
 
     // if a user is actually selected (and is in the user list):
     if(selected_username && (selected_username.length > 0) && (selected_username in all_users) ) {
         let selected_user = all_users[selected_username]
+        
 
-        let filepath = $('#advdialog').attr('filepath')
+        //edit: let filepath = $('#permdialog').attr('filepath')
+        let filepath = $('#permdialog').attr('filepath')
         let file = path_to_file[filepath]
 
         // for each possible permission value
@@ -334,9 +338,11 @@ let adv_contents = $(`#advdialog`).dialog({
 });
 // generate ID for each HTML element making up the dialog:
 
-// open user select dialog on "select" button press:
+// star: open user select dialog on "select" button press:
 $("#adv_effective_user_select").click(function(event){
-    open_user_select("adv_effective_current_user") // Update element with id=adv_effective_current_user once user is selected.
+    open_user_select("adv_effective_current_user")
+    //open_user_select("adv_effective_current_user") 
+    // Update element with id=adv_effective_current_user once user is selected.
 })
 
 // listen for changes to inheritance checkbox:
@@ -441,7 +447,7 @@ $('#adv_perm_replace_child_permissions').change(function(){
     }
 })
 
-// listen for mutations on selected user name in effective user permissions:
+// heart: listen for mutations on selected user name in effective user permissions:
 effective_user_observer = new MutationObserver(function(mutationsList, observer){
     for(let mutation of mutationsList) {
         if(mutation.type === 'attributes') {
