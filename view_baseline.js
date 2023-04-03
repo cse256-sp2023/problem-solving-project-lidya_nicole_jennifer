@@ -56,16 +56,11 @@ let tips_dialog = define_new_dialog('tips_dialog', "Tips", {
     }
 })
 // Add text to the dialog:
-tips_dialog.text(<p>When the system decides whether a permission is granted or not in a specific scenario, 
-    “deny” takes priority. 
-    If both "allow" and "deny" are checked for one type of permission, 
-    that permission will be DENIED. Meanwhile, if a permission is denied for a group, 
-    that also apply to individual users. However, if a user group is “allowed” a permission,
-     you can remove this permission from a member of this group by looking into this user specifically 
-     and select “deny”, which will override the “allow” from the group. </p>
-
-
-)
+tips_dialog.text("(1) When the system decides whether a permission is granted or not in a specific scenario, the idea is that “deny” takes priority. "+
+'------------------------------------------------------------------(2) If both "allow" and "deny" are checked for one type of permission, that permission will be DENIED. ' +  
+'------ -------------------------------------------------(3) Meanwhile, if a permission is denied for a group, that also apply to individual users. ' + 
+'---------------------------------------------------------------------------(4) However, if a user group is “allowed” a permission, you can remove this permission from a member of this group by looking into this user specifically ' +
+ 'and select “deny”, which will override the “allow” from the group.')
 
 
 
