@@ -217,7 +217,7 @@ function open_permission_entry(file_path) {
 // populate and open the "advanced" dialog for a given file
 function open_advanced_dialog(file_path) {
     let file_obj = path_to_file[file_path]
-
+ 
     // set file path in UI:
     $('#adv_perm_filepath').text(file_path);
     $('#adv_owner_filepath').text(file_path);
