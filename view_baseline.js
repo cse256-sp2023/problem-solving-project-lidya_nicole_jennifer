@@ -10,22 +10,74 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
     height: 800,
     width: 450,
     buttons: {
+        
+        Tips:{
+            text: "Need help?",
+            id: "tips-button",
+            click: function() {
+                tips_dialog.dialog('open');
+            }
+        },
+        Advanced: {
+            text: "Advanced setting",
+            id: "perm-dialog-advanced-button",
+            click: function() {
+                open_advanced_dialog(perm_dialog.attr('filepath'))
+            }
+        },
         OK:{
             text: "OK",
             id: "perm-dialog-ok-button",
             click: function() {
                 $( this ).dialog( "close" );
             }
-        },
-        Advanced: {
-            text: "Advanced",
-            id: "perm-dialog-advanced-button",
+        }
+    }
+})
+
+
+
+
+
+
+
+
+// Make a confirmation "are you sure you want to remove?" dialog
+// Dialog for confirming removal of permissions for user and file (user and file attributed need to be populated)
+let tips_dialog = define_new_dialog('tips_dialog', "Tips", {
+    buttons: {
+        OK:{
+            text: "OK",
+            id: "perm-dialog-ok-button",
             click: function() {
-                open_advanced_dialog(perm_dialog.attr('filepath'))
+                $( this ).dialog( "close" );
             }
         }
     }
 })
+// Add text to the dialog:
+tips_dialog.text(<p>When the system decides whether a permission is granted or not in a specific scenario, 
+    “deny” takes priority. 
+    If both "allow" and "deny" are checked for one type of permission, 
+    that permission will be DENIED. Meanwhile, if a permission is denied for a group, 
+    that also apply to individual users. However, if a user group is “allowed” a permission,
+     you can remove this permission from a member of this group by looking into this user specifically 
+     and select “deny”, which will override the “allow” from the group. </p>
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Make the initial "Object Name:" text:
 // If you pass in valid HTML to $(), it will *create* elements instead of selecting them. (You still have to append them, though)
