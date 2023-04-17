@@ -186,8 +186,8 @@ perm_remove_user_button.click(function(){
 
 // --- Append all the elements to the permissions dialog in the right order: --- 
 perm_dialog.append(obj_name_div)
-perm_dialog.append($('<div id="permissions_user_title">First, select a user or a group of users from the list below\n' +
-  'to view or update their file permissions</div>'))
+perm_dialog.append($('<div id="permissions_user_title">First, select a user or a group of users from the list below to view or update their file permissions. --------------------------------------------------------------------------Settings for groups can affect individual users below who are part of the group, e.g. "students" vs. "teaching_assistant"------------------------------------------------------------------------------' +
+  '</div>'))
 perm_dialog.append(file_permission_users)
 perm_dialog.append(perm_add_user_select)
 perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
