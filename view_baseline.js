@@ -55,7 +55,7 @@ let tips_dialog = define_new_dialog('tips_dialog', "Tips", {
 // Add text to the dialog:
 tips_dialog.text("(1) When the system decides whether a permission is granted or not in a specific scenario, the idea is that “deny” takes priority. "+
 '------------------------------------------------------------------(2) If both "allow" and "deny" are checked for one type of permission, that permission will be DENIED. ' +  
-'------ -------------------------------------------------(3) Meanwhile, if a permission is denied for a group, that also apply to individual users. ' + 
+'------ -------------------------------------------------(3) Meanwhile, if a permission is denied for a group, that also apply to individual users. E.g. "Teaching assistant" can be a member of the group "student", so any setting for "student" overrides that of "TA". ' + 
 '---------------------------------------------------------------------------(4) However, if a user group is “allowed” a permission, you can remove this permission from a member of this group by looking into this user specifically ' +
  'and select “deny”, which will override the “allow” from the group.')
 
@@ -69,11 +69,11 @@ tips_dialog.text("(1) When the system decides whether a permission is granted or
 
 
 // Make the initial "Object Name:" text:
-// If you pass in valid HTML to $(), it will *create* elements instead of selecting them. (You still have to append them, though)
-obj_name_div = $('<div id="permdialog_objname" class="section">Object Name: <span id="permdialog_objname_namespan"></span> </div>')
+// 🌟If you pass in valid HTML to $(), it will *create* elements instead of selecting them. (You still have to append them, though)
+obj_name_div = $('<div id="permdialog_objname" class="section">Currently selected file: <span id="permdialog_objname_namespan"></span> </div>')
 
 //Make the div with the explanation about special permissions/advanced settings:
-advanced_expl_div = $('<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced.</div>')
+advanced_expl_div = $('<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced. Check the following list to see what the permissions above are about. E.g. Modify = delete</div>')
 
 // Make the (grouped) permission checkboxes table:
 grouped_permissions = define_grouped_permission_checkboxes('permdialog_grouped_permissions')
