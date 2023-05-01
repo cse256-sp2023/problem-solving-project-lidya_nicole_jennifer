@@ -7,8 +7,8 @@ show_starter_dialogs = false // set this to "false" to disable the survey and 3-
 // Make permissions dialog:
 perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
     // The following are standard jquery-ui options. See https://jqueryui.com/dialog/
-    height: 500,
-    width: 400,
+    height: 750,
+    width:440,
     buttons: {
         Tips:{
             text: "Need help?",
@@ -73,7 +73,7 @@ tips_dialog.text("(1) When the system decides whether a permission is granted or
 obj_name_div = $('<div id="permdialog_objname" class="section">Currently selected file: <span id="permdialog_objname_namespan"></span> </div>')
 
 //Make the div with the explanation about special permissions/advanced settings:
-advanced_expl_div = $('<div id="permdialog_advanced_explantion_text">For special permissions or advanced settings, click Advanced. Check the following list to see what the permissions above are about. E.g. Modify = delete</div>')
+advanced_expl_div = $('<div id="permdialog_advanced_explantion_text">💙 The following list shows the 13 components each permission above is comprised of. --------------------------E.g. [Modify] = 🗑️ the permission to delete a file / folder. --------------------------------------------If you would like to grant/deny these more specific permissions without following the 6 categories outlined above, click "Advanced" -> "Edit detailed Permissions".</div>')
 
 // Make the (grouped) permission checkboxes table:
 grouped_permissions = define_grouped_permission_checkboxes('permdialog_grouped_permissions')
@@ -89,7 +89,7 @@ file_permission_users.css({
 })
 
 // Make button to add a new user to the list:
-perm_add_user_select = define_new_user_select_field('perm_add_user', 'Add new user from list', on_user_change = function(selected_user){
+perm_add_user_select = define_new_user_select_field('perm_add_user', '➕ Add new user from list', on_user_change = function(selected_user){
     let filepath = perm_dialog.attr('filepath')
     if(selected_user && (selected_user.length > 0) && (selected_user in all_users)) { // sanity check that a user is actually selected (and exists)
         let expected_user_elem_id = `permdialog_file_user_${selected_user}`
@@ -185,9 +185,21 @@ perm_remove_user_button.click(function(){
 
 
 // --- Append all the elements to the permissions dialog in the right order: --- 
+
+
 perm_dialog.append(obj_name_div)
-perm_dialog.append($('<div id="permissions_user_title">First, select a user or a group of users from the list below to view or update their file permissions. --------------------------------------------------------------------------Settings for groups can affect individual users below who are part of the group, e.g. "students" vs. "teaching_assistant"------------------------------------------------------------------------------' +
-  '</div>'))
+perm_dialog.append($('<div id="permissions_user_title">----------------------------------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title">----------------------------------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title">📚 Read these instructions first; they will likely be helpful to your quest<br>'))
+perm_dialog.append($('<div id="permissions_user_title">----------------------------------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title">❇️ First, select a user or a group of users from the list below to view or update their file permissions.</div>'))
+perm_dialog.append($('<div id="permissions_user_title">-------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title">❇️ To stop a user from accessing or making changes to this file, just click on the [❌Deny] checkbox for their [full control]; to stop them from making changes, choose [❌Deny] for [Write] and [Modify] </div>'))
+perm_dialog.append($('<div id="permissions_user_title">-------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title">❇️ Settings for groups can affect individual users below who are part of the group, e.g. "students" vs. "teaching_assistant"</div>'))
+perm_dialog.append($('<div id="permissions_user_title">-------------------------------</div>'))
+perm_dialog.append($('<div id="permissions_user_title"></div>'))
+
 perm_dialog.append(file_permission_users)
 perm_dialog.append(perm_add_user_select)
 perm_add_user_select.append(perm_remove_user_button) // Cheating a bit again - add the remove button the the 'add user select' div, just so it shows up on the same line.
@@ -395,11 +407,9 @@ $('#adv_perm_inheritance').change(function(){
     else {
         // has just been turned off - pop up dialog with add/remove/cancel
         $(`<div id="add_remove_cancel" title="Security">
-            Warning: if you proceed, inheritable permissions will no longer propagate to this object.<br/>
-            - Select checkbox will add inherited parent permissions as explicit permissions on this object<br/>
-            - Unselect checkbox will remove inherited parent permissions from this object<br/>
-            - Click Cancel if you do not want to modify inheritance settings at this time.<br/>
-            - Click Confirm will save your change.<br/>
+            Checking “inherit permission" allows you to edit the grayed-out permission checkboxes on your permission panel. <br>
+            (they were grayed out because the default setting was to inherit those permissions from their parent folder).  <br/>
+            
         </div>`).dialog({ // TODO: don't create this dialog on the fly
             modal: true,
             width: 400,
