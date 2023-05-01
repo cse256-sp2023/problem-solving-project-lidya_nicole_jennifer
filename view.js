@@ -34,6 +34,7 @@ function make_file_element(file_obj) {
                 </button>
             </h3>
         </div>`)
+        
 
         // append children, if any:
         if( file_hash in parent_to_children) {
